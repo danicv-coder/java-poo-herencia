@@ -8,6 +8,21 @@ public class Alumno extends Persona {
 	private double notasBDD;
 	private int carneEstudiante;
 
+	public Alumno() {
+		System.out.println("Se esta inicializando el  constructor de Alumno:");
+	}
+
+	public Alumno(String nombre, String apellido, String institución) {
+		super(nombre, apellido);
+		this.institución = institución;
+	}
+
+	public Alumno(String nombre, String apellido, String institución, String carreraCursar) {
+		super(nombre, apellido);
+		this.institución = institución;
+		this.carreraCursar = carreraCursar;
+	}
+
 	public String getInstitución() {
 		return institución;
 	}
@@ -55,4 +70,15 @@ public class Alumno extends Persona {
 	public void setCarneEstudiante(int carneEstudiante) {
 		this.carneEstudiante = carneEstudiante;
 	}
+
+	@Override
+	public String saludar() {
+		
+		String saludar = super.saludar();
+		return saludar + " mi nombre es " + getNombre() + " " + getApellido() ;
+	}
+
+	
+	
+	
 }

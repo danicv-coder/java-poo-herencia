@@ -2,11 +2,14 @@ package herencia;
 
 import herencia.modelo.Alumno;
 import herencia.modelo.AlumnoInternacional;
+import herencia.modelo.Persona;
 import herencia.modelo.Profesor;
 
-public class EjemploHerencia {
+public class EjemploHerenciaConstructor {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 		System.out.println("\n============= inicializando la clase alumno =============");
 
 		// ********* ALUMNO *********
@@ -47,16 +50,39 @@ public class EjemploHerencia {
 		// ********* PROFE PRIM *********
 		System.out.println("\nProfesor: " + profe.getNombre() + " " + profe.getApellido());
 		System.out.println("Asignatura: " + profe.getAsignatura());
+		
+		System.out.println(alumno.saludar());
+		System.out.println(alumnoInt.saludar());
+		System.out.println(profe.saludar());
+		
+		imprimir(alumno);
+		imprimir(alumnoInt);
+		imprimir(profe);
 
-		Class clase = alumnoInt.getClass();
-		while (clase.getSuperclass() != null) {
-			String hija = clase.getName();
-			String padre = clase.getSuperclass().getName();
-			System.out.println("\n" + hija + " es una clase hija de la clase padre " + padre);
-			clase = clase.getSuperclass();
+	}
+
+	public static void imprimir(Persona persona) {
+		System.out.println("\nImprimiendo datos del tipo persona:");
+		System.out.print("nombre: " + persona.getNombre() + ", apellido: " + persona.getApellido() + ", edad: "
+				+ persona.getEdad());
+
+		if (persona instanceof Alumno) {
+			System.out.println("\nImprimiendo datos del tipo alumno:");
+			System.out.println("Institución: " + ((Alumno) persona).getInstitución());
+			System.out.println("Institución: " + ((Alumno) persona).getNotasCalculo());
+
+			if (persona instanceof AlumnoInternacional) {
+				System.out.println("Imprimiendo datos del tipo alumnoInternacional:");
+				System.out.println("Notas idiomas: " + ((AlumnoInternacional) persona).getNotaIdiomas());
+				System.out.println("Pais: " + ((AlumnoInternacional) persona).getPais());
+			}
 
 		}
+		if (persona instanceof Profesor) {
+			System.out.println("Imprimiendo datos del tipo profesor:");
+			System.out.println("Asignaturas: " + ((Profesor) persona).getAsignatura());
 
+		}
 	}
 
 }
